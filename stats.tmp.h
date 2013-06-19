@@ -259,7 +259,7 @@ quantile(ConstRandomAccessIterator first, ConstRandomAccessIterator last, double
  * This function emulates <tt>std::is_sorted()</tt> for platforms without access 
  * to either a C++11-compliant compiler or Boost 1.50 or later.
  *
- * @tparam ForwardIteratorIterator The iterator type for the container to be tested. 
+ * @tparam ConstForwardIterator The iterator type for the container to be tested. 
  * Must be a <a href="http://www.boost.org/doc/libs/release/doc/html/ForwardIterator.html">forward iterator</a>.
  * @param[in] first,last Forward iterators to the range to test. The range 
  *	is all elements in the interval [@p first, @p last).
@@ -270,15 +270,25 @@ quantile(ConstRandomAccessIterator first, ConstRandomAccessIterator last, double
  * @perform O(D), where D = std::distance(@p first, @p last).
  *
  * @exceptsafe The range [@p first, @p last) is unchanged in the event of 
- *	an exception if ForwardIterator provides at least the basic 
- *	guarantee. Does not throw exceptions unless ForwardIterator throws.
+ *	an exception if ConstForwardIterator provides at least the basic 
+ *	guarantee. Does not throw exceptions unless ConstForwardIterator throws.
+ * 
+ * @test Empty list. Expected behavior: true.
+ * @test List of size 1. Expected behavior: true.
+ * @test List of size 2, sorted asc. Expected behavior: true.
+ * @test List of size 2, sorted desc. Expected behavior: false.
+ * @test List of size 10, list[i] = i^2. Expected behavior: true.
+ * @test List of size 10, list[i] = (i-5)^2. Expected behavior: false.
+ * @test List of size 10, random elements. Expected behavior: false.
+ *
+ * @todo Implement these test cases.
  */
-template <class ForwardIterator>
+template <class ConstForwardIterator>
 BOOST_CONCEPT_REQUIRES(
-	((ReadableIteratorConcept<ForwardIterator>)) 
-	((ForwardTraversalConcept<ForwardIterator>)),	// Iterator semantics
+	((ReadableIteratorConcept<ConstForwardIterator>)) 
+	((ForwardTraversalConcept<ConstForwardIterator>)),	// Iterator semantics
 	(bool)) 					// Return type
-isSorted (ForwardIterator first, ForwardIterator last) {
+isSorted (ConstForwardIterator first, ConstForwardIterator last) {
 	// Code shamelessly copied from http://www.cplusplus.com/reference/algorithm/is_sorted/
 	if (first==last) {
 		return true;
@@ -286,8 +296,8 @@ isSorted (ForwardIterator first, ForwardIterator last) {
 	
 	// Since iterators are passed by value, incrementing first does not 
 	//	violate exception guarantee
-	ForwardIterator next = first;
-	for(ForwardIterator next = first; ++next != last; ++first) {
+	ConstForwardIterator next = first;
+	for(ConstForwardIterator next = first; ++next != last; ++first) {
 		if (*next<*first) {
 			return false;
 		}
