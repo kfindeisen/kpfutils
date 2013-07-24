@@ -2,7 +2,7 @@
  * @file common/kpfutils.h
  * @author Krzysztof Findeisen
  * @date Created June 18, 2013
- * @date Last modified June 18, 2013
+ * @date Last modified July 24, 2013
  *
  * @todo Add modules so that standalone functions are documented.
  */
@@ -15,7 +15,7 @@
  * "+build" tag can be used to distinguish which development version 
  *	was used to create which output
  */
-#define KPFUTILS_VERSION_STRING "0.1.0-devel+build.1"
+#define KPFUTILS_VERSION_STRING "0.1.0-devel+build.2"
 
 /** Machine-readable version information
  */
@@ -41,7 +41,7 @@
  * C++98/C++03-compliant compiler. For portability between build 
  * environments, no TR1 or C++11 features are included. However, the 
  * makefile itself is specific to GCC, so users wishing to install 
- * Lightcurve MC on a non-Unix platform may need to revise the contents of 
+ * @c kpfutils on a non-Unix platform may need to revise the contents of 
  * the following files: 
  * - @c makefile
  * - @c makefile.inc
@@ -50,7 +50,7 @@
  * 
  * The library may switch to CMake in the future for improved portability.
  *
- * Lightcurve MC depends on the following external libraries:
+ * @c kpfutils depends on the following external libraries:
  * - <a href="http://www.boost.org/">Boost</a> 1.31 or later
  * 
  * These libraries are not provided with the installation package, as most 

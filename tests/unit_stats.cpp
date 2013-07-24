@@ -36,6 +36,7 @@
 #include <gsl/gsl_statistics_double.h>
 #include <gsl/gsl_statistics_int.h>
 #include "../stats.tmp.h"
+#include "../alloc.tmp.h"
 
 namespace kpfutils { namespace test {
 
@@ -66,10 +67,8 @@ public:
 		twoList.push_back(27);
 	
 		// Data come from a random number generator
-		shared_ptr<gsl_rng> testRng(gsl_rng_alloc(gsl_rng_mt19937), &gsl_rng_free);
-		if (testRng.get() == NULL) {
-			throw bad_alloc();
-		}
+		shared_ptr<gsl_rng> testRng(checkAlloc(gsl_rng_alloc(gsl_rng_mt19937)), 
+			&gsl_rng_free);
 		gsl_rng_set(testRng.get(), 42);
 		
 		// Define the arrays, then the STL versions

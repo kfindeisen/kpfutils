@@ -2,7 +2,7 @@
  * @file common/stats.tmp.h
  * @author Krzysztof Findeisen
  * @date Created July 21, 2011
- * @date Last modified June 17, 2013
+ * @date Last modified July 23, 2013
  */
 
 #include <algorithm>
@@ -296,7 +296,6 @@ isSorted (ConstForwardIterator first, ConstForwardIterator last) {
 	
 	// Since iterators are passed by value, incrementing first does not 
 	//	violate exception guarantee
-	ConstForwardIterator next = first;
 	for(ConstForwardIterator next = first; ++next != last; ++first) {
 		if (*next<*first) {
 			return false;
