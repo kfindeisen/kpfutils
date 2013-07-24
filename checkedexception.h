@@ -1,5 +1,5 @@
 /** Base exception class analogous to std::runtime_error and std::logic_error
- * @file common/except/exception.h
+ * @file common/checkedexception.h
  * @author Krzysztof Findeisen
  * @date Created April 22, 2013
  * @date Last modified April 22, 2013
@@ -14,6 +14,18 @@
 namespace kpfutils { namespace except {
 
 using std::string;
+
+/** @defgroup exceptions Exception support
+ *
+ * General-purpose exceptions
+ * 
+ * These exceptions cover situations that can appear in any program. Programs 
+ * may wish to specialize these exceptions to their own needs.
+ * 
+ * Include checkedexception.h to inherit from CheckedException. 
+ *
+ *  @{
+ */
 
 /** This is the base class for exceptions thrown by Lightcurve MC that are 
  * foreseeable and can, in principle, be handled at run time. 
@@ -39,6 +51,8 @@ public:
 private: 
 	string arg;
 };
+
+/** @} */	// end exceptions
 
 }}		// end kpfutils::except
 

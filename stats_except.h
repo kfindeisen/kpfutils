@@ -15,6 +15,11 @@ namespace kpfutils { namespace except {
 
 using std::string;
 
+/** @addtogroup stats
+ *
+ *  @{
+ */
+
 /** This exception is thrown if a range does not contain enough data to 
  *	calculate the desired statistic
  */
@@ -24,6 +29,8 @@ public:
 	 */
 	explicit NotEnoughData(const string& what_arg);
 };
+
+/** @} */	// end stats
 
 }}		// end kpfutils::except
 

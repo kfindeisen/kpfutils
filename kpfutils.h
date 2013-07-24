@@ -15,7 +15,7 @@
  * "+build" tag can be used to distinguish which development version 
  *	was used to create which output
  */
-#define KPFUTILS_VERSION_STRING "0.1.0-devel+build.3"
+#define KPFUTILS_VERSION_STRING "0.1.0-devel+build.5"
 
 /** Machine-readable version information
  */
@@ -103,5 +103,9 @@
  * @subsection v0_1_0_fix Bug Fixes 
  * 
  */
+
+/** Common namespace for all components of the library.
+ */
+namespace kpfutils {}
 
 #endif		// KPFUTILSH

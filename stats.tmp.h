@@ -2,7 +2,7 @@
  * @file common/stats.tmp.h
  * @author Krzysztof Findeisen
  * @date Created July 21, 2011
- * @date Last modified July 23, 2013
+ * @date Last modified July 24, 2013
  */
 
 #include <algorithm>
@@ -23,6 +23,18 @@ using boost_concepts::RandomAccessTraversalConcept;
 /** A convenient shorthand for vectors of doubles.
  */
 typedef std::vector<double> DoubleVec;
+
+/** @defgroup stats Statistics routines
+ *
+ * Speed-optimized statistics routines
+ *
+ * These functions calculate basic statistics. Unlike the equivalent GSL 
+ * routines, they work on any container and do not require the overhead of 
+ * converting to array format. Use them by including stats.tmp.h, or 
+ * stats_except.h to catch exceptions.
+ *
+ *  @{
+ */
 
 /*----------------------------------------------------------
  * Speed-optimized statistics routines
@@ -103,8 +115,8 @@ mean(ConstInputIterator first, ConstInputIterator last) {
  * 
  * @tparam ConstInputIterator The iterator type for the container over which the 
  *	variance is to be calculated. Must be <a href="http://www.boost.org/doc/libs/release/libs/iterator/doc/ReadableIterator.html">readable</a> and support <a href="http://www.boost.org/doc/libs/release/libs/iterator/doc/ForwardTraversal.html">forward traversal</a>.
- * @param[in] @p first Input iterator marking the first element in the container.
- * @param[in] @p last Input iterator marking the position after the last element in the container.
+ * @param[in] first Input iterator marking the first element in the container.
+ * @param[in] last Input iterator marking the position after the last element in the container.
  *
  * @return The (unbiased) sample variance of the elements between @p first, 
  *	inclusive, and @p last, exclusive. The return type is that of the 
@@ -303,5 +315,7 @@ isSorted (ConstForwardIterator first, ConstForwardIterator last) {
 	}
 	return true;
 }
+
+/** @} */	// end stats
 
 }	// end kpfutils

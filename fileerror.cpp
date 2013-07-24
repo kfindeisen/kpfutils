@@ -2,7 +2,7 @@
  * @file common/fileerror.cpp
  * @author Krzysztof Findeisen
  * @date Created June 18, 2013
- * @date Last modified June 18, 2013
+ * @date Last modified July 24, 2013
  */
 
 #include <string>

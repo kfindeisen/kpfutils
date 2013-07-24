@@ -2,20 +2,25 @@
  * @file common/cerror.h
  * @author Krzysztof Findeisen
  * @date Created May 27, 2013
- * @date Last modified June 18, 2013
+ * @date Last modified July 24, 2013
  */
 
-#ifndef CERRORH
-#define CERRORH
+#ifndef KPFUTILSCERRORH
+#define KPFUTILSCERRORH
 
 #include <string>
 #include <cstdio>
 
 namespace kpfutils {
 
-/* Wrapper that throws @c std::runtime_error in response to a GSL error
+/** @addtogroup cstyle
+ *
+ * These functions wrap C++ conventions around C-style code.
+ *
+ * Include cerror.h to parse integer error codes.
+ *
+ * @{
  */
-//void gslCheck(int status, std::string msg);
 
 /** Wrapper that throws @c std::runtime_error in response to a C library error
  */
@@ -26,6 +31,8 @@ void cError(std::string msg);
  */
 void fileError(FILE* const stream, std::string msg);
 
+/** @} */ 	// End alloc
+
 }	// end kpfutils
 
-#endif	// CERRORH
+#endif	// KPFUTILSCERRORH

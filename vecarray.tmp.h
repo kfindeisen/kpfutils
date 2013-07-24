@@ -2,12 +2,22 @@
  * @file vecarray.tmp.h
  * @author Krzysztof Findeisen
  * @date Created May 26, 2013
- * @date Last modified May 26, 2013
+ * @date Last modified July 24, 2013
  */
 
 #include <stdexcept>
 #include <vector>
 #include <boost/smart_ptr.hpp>
+
+namespace kpfutils {
+
+/** @defgroup vecarray Vector and array conversions
+ *
+ * These functions wrap copying of vectors into arrays and vice versa.
+ *
+ * Use these functions by including vecarray.tmp.h
+ *  @{
+ */
 
 /** Returns an array copy of a vector.
  *
@@ -63,3 +73,7 @@ std::vector<T> arrToVec(const T arr[], size_t n) {
 	
 	return vec;
 }
+
+/** @} */	// end conversion
+
+}	// end kpfutils

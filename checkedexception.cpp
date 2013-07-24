@@ -1,5 +1,5 @@
 /** Base exception class analogous to std::runtime_error and std::logic_error
- * @file common/except/exception.cpp
+ * @file common/checkedexception.cpp
  * @author Krzysztof Findeisen
  * @date Created April 22, 2013
  * @date Last modified April 22, 2013

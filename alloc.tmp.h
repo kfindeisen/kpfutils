@@ -2,17 +2,26 @@
  * @file common/alloc.tmp.h
  * @author Krzysztof Findeisen
  * @date Created May 27, 2013
- * @date Last modified May 27, 2013
+ * @date Last modified July 24, 2013
  */
 
-#ifndef ALLOCH
-#define ALLOCH
+#ifndef KPFUTILSALLOCH
+#define KPFUTILSALLOCH
 
 #include <string>
 #include <cstdio>
 #include <boost/smart_ptr.hpp>
 
 namespace kpfutils {
+
+/** @defgroup cstyle C-style Wrappers
+ *
+ * These functions wrap C++ conventions around C-style code.
+ * 
+ * Include alloc.tmp.h to wrap resource allocations.
+ *
+ * @{
+ */
 
 /** Wrapper that throws @ref kpfutils::except::FileIo "FileIo" if it cannot open a file
  */
@@ -40,6 +49,8 @@ T* checkAlloc(T* const p) {
 	return p;
 }
 
+/** @} */ 	// End alloc
+
 }	// end kpfutils
 
-#endif	// ALLOCH
+#endif	// KPFUTILSALLOCH

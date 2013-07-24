@@ -2,7 +2,7 @@
  * @file common/filealloc.cpp
  * @author Krzysztof Findeisen
  * @date Created June 18, 2013
- * @date Last modified June 18, 2013
+ * @date Last modified July 24, 2013
  */
 
 #include <string>
@@ -20,7 +20,7 @@ using boost::shared_ptr;
 /** Wrapper that throws @ref kpfutils::except::FileIo "FileIo" if it 
  *	cannot open a file
  *
- * @param[in] filename The file to open.
+ * @param[in] fileName The file to open.
  * @param[in] mode The mode to open the file, following the same 
  *	conventions as for @c fopen()
  *

@@ -1,5 +1,5 @@
 /** Exception definitions for file operations
- * @file common/except/fileio.cpp
+ * @file common/fileio.cpp
  * @author Krzysztof Findeisen
  * @date Created May 8, 2013
  * @date Last modified May 8, 2013
