@@ -10,7 +10,7 @@ include ../makefile.inc
 PROJ    := test
 SOURCES := driver.cpp unit_stats.cpp
 OBJS    := $(SOURCES:.cpp=.o)
-LIBS    := kpfutils gsl boost_unit_test_framework-mt 
+LIBS    := kpfutils gsl gslcblas boost_unit_test_framework-mt 
 
 #---------------------------------------
 # Primary build option

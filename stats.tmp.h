@@ -225,7 +225,7 @@ variance(ConstInputIterator first, ConstInputIterator last) {
  * @test Array of doubles, length 100, randomly generated, quantile=0.00, 0.42, or 1.00. 
  *	Expected behavior: TBD
  *
- * @bug Behavior inconsistent with Wikipedia's definition of quantile
+ * @todo Pick a specific convention for quantiles and use it consistently
  *
  * @todo Finish designing test cases. Can't use gsl_stats_quantile_from_sorted_data 
  *	as an oracle because it interpolates

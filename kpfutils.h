@@ -86,21 +86,17 @@
  *
  *
  * @page changelog Version History
+ *
+ * @brief <b></b>
  * 
  * @c kpfutils conforms to 
  * <a href="http://semver.org/spec/v2.0.0-rc.1.html">version 2.0.0-rc.1 of the Semantic Versioning specification</a>. 
- * All version numbers are to be interpreted as described therein. 
- * This documentation constitutes the public API for the library.
+ * All version numbers are to be interpreted as described therein. This 
+ * documentation constitutes the public API for the library.
  *
  * @section v0_1_0 Version 0.1.0-devel
  *
- * @subsection v0_1_0_diff Changes 
- * 
- * 
- * @subsection v0_1_0_new New Features 
- * 
- * 
- * @subsection v0_1_0_fix Bug Fixes 
+ * Initial release.
  * 
  */
 
