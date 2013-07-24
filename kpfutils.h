@@ -15,7 +15,7 @@
  * "+build" tag can be used to distinguish which development version 
  *	was used to create which output
  */
-#define KPFUTILS_VERSION_STRING "0.1.0-devel+build.2"
+#define KPFUTILS_VERSION_STRING "0.1.0-devel+build.3"
 
 /** Machine-readable version information
  */

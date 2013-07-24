@@ -2,7 +2,7 @@
  * @file common/tests/unit_stats.cpp
  * @author Krzysztof Findeisen
  * @date Created July 20, 2011
- * @date Last modified June 17, 2013
+ * @date Last modified July 24, 2013
  */
 
 #include "../warnflags.h"
@@ -97,6 +97,9 @@ public:
 				}
 			}
 		}
+	}
+	
+	virtual ~StatsData() {
 	}
 	
 	/** Empty list of ints
