@@ -53,9 +53,9 @@
  * @c kpfutils depends on the following external libraries:
  * - <a href="http://www.boost.org/">Boost</a> 1.31 or later
  * 
- * These libraries are not provided with the installation package, as most 
- * systems will have Boost installed already. Please contact your 
- * system administrator if these libraries are not installed.
+ * Boost is not provided with the installation package, as most 
+ * operating systems will have it installed already. Please contact your 
+ * system administrator if Boost is not installed.
  * 
  * In addition, (re-)generating this documentation requires 
  * <a href="http://www.doxygen.org/">Doxygen</a> 1.8.0 or later.
