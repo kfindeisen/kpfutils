@@ -2,9 +2,7 @@
  * @file common/kpfutils.h
  * @author Krzysztof Findeisen
  * @date Created June 18, 2013
- * @date Last modified July 24, 2013
- *
- * @todo Add modules so that standalone functions are documented.
+ * @date Last modified July 25, 2013
  */
 
 #ifndef KPFUTILSH
@@ -12,17 +10,17 @@
 
 /** Current version of the library, for compatibility requirements.
  *
- * "+build" tag can be used to distinguish which development version 
- *	was used to create which output
+ * @internal "+build" tag can be used to distinguish which development 
+ *	version was used to create which output
  */
-#define KPFUTILS_VERSION_STRING "0.1.0-devel+build.5"
+#define KPFUTILS_VERSION_STRING "1.0.0-devel"
 
 /** Machine-readable version information
  */
-#define KPFUTILS_MAJOR_VERSION 0
+#define KPFUTILS_MAJOR_VERSION 1
 /** Machine-readable version information
  */
-#define KPFUTILS_MINOR_VERSION 1
+#define KPFUTILS_MINOR_VERSION 0
 
 /** @mainpage
  *
@@ -51,10 +49,10 @@
  * The library may switch to CMake in the future for improved portability.
  *
  * @c kpfutils depends on the following external libraries:
- * - <a href="http://www.boost.org/">Boost</a> 1.31 or later
+ * - <a href="http://www.boost.org/">Boost</a> 1.33 or later
  * 
- * Boost is not provided with the installation package, as most 
- * operating systems will have it installed already. Please contact your 
+ * Boost is not provided with the installation package, as it is included 
+ * with many C++ compilers and operating systems. Please contact your 
  * system administrator if Boost is not installed.
  * 
  * In addition, (re-)generating this documentation requires 
@@ -64,7 +62,7 @@
  *
  * This directory (@c common) should be placed in the same directory as the 
  * build directories of any programs that rely on @c kpfutils. Programs will 
- * look for a <tt>../common</tt> directory when searching for include files and 
+ * look for a <tt>../common/</tt> directory when searching for include files and 
  * when linking to the library.
  * 
  * @section install_make Build Commands
@@ -90,11 +88,11 @@
  * @brief <b></b>
  * 
  * @c kpfutils conforms to 
- * <a href="http://semver.org/spec/v2.0.0-rc.1.html">version 2.0.0-rc.1 of the Semantic Versioning specification</a>. 
+ * <a href="http://semver.org/spec/v2.0.0.html">version 2.0.0 of the Semantic Versioning specification</a>. 
  * All version numbers are to be interpreted as described therein. This 
  * documentation constitutes the public API for the library.
  *
- * @section v0_1_0 Version 0.1.0-devel
+ * @section v1_0_0 Version 1.0.0
  *
  * Initial release.
  * 

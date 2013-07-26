@@ -23,7 +23,8 @@ namespace kpfutils {
  * @exception kpfutils::except::FileIo Thrown if @c ferror(@p stream)
  * 
  * @exceptsafe The function arguments are unchanged in the event of an 
- *	exception. The global variable @c errno is reset to 0.
+ *	exception. The global variable @c errno is reset to 0. All error 
+ *	indicators for @p stream are reset.
  */
 void fileError(FILE* const stream, std::string msg) {
 	if (ferror(stream) || feof(stream)) {

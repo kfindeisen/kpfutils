@@ -15,7 +15,7 @@ namespace kpfutils { namespace except {
 
 using std::string;
 
-/** @defgroup exceptions Exception support
+/** @defgroup exceptions Exception Support
  *
  * General-purpose exceptions
  * 

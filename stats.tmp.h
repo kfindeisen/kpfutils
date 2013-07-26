@@ -7,10 +7,12 @@
 
 #include <algorithm>
 #include <stdexcept>
+#include <string>
 #include <vector>
 #include <cstdio>
 #include <boost/concept/requires.hpp>
 #include <boost/iterator/iterator_concepts.hpp>
+#include <boost/lexical_cast.hpp>
 #include "stats_except.h"
 
 namespace kpfutils {
@@ -20,31 +22,27 @@ using boost_concepts::ReadableIteratorConcept;
 using boost_concepts::ForwardTraversalConcept;
 using boost_concepts::RandomAccessTraversalConcept;
  
-/** A convenient shorthand for vectors of doubles.
- */
-typedef std::vector<double> DoubleVec;
-
-/** @defgroup stats Statistics routines
+/** @defgroup stats Statistics Functions
  *
- * Speed-optimized statistics routines
+ * Speed-optimized statistics functions
  *
- * These functions calculate basic statistics. Unlike the equivalent GSL 
- * routines, they work on any container and do not require the overhead of 
- * converting to array format. Use them by including stats.tmp.h, or 
- * stats_except.h to catch exceptions.
+ * These functions calculate basic sample statistics. Unlike the equivalent 
+ * GSL functions, they work on any container and do not require the overhead 
+ * of converting to C-array format. Use them by including stats.tmp.h.
+ * Include stats_except.h to catch exceptions thrown by these functions.
  *
  *  @{
  */
 
 /*----------------------------------------------------------
- * Speed-optimized statistics routines
+ * Speed-optimized Statistics Functions
  * I already had these written, so it was simpler than writing a wrapper to 
  *	convert vectors to C arrays just so GSL can understand them
  */
 
 /** Finds the mean of the values in a generic container object. The container 
- *	class is accessed using first and last iterators, as in the C++ STL 
- *	convention, and the variance is computed over the interval [first, last).
+ *	class is accessed using first and last iterators, and the mean is 
+ *	computed over the interval [first, last).
  * 
  * @tparam ConstInputIterator The iterator type for the container over which the 
  *	mean is to be calculated. Must be <a href="http://www.boost.org/doc/libs/release/libs/iterator/doc/ReadableIterator.html">readable</a> and support <a href="http://www.boost.org/doc/libs/release/libs/iterator/doc/ForwardTraversal.html">forward traversal</a>.
@@ -58,6 +56,9 @@ typedef std::vector<double> DoubleVec;
  *
  * @pre [@p first, @p last) is a valid range
  * @pre There is at least one element in the range [@p first, @p last)
+ * @pre No value in [@p first, @p last) is NaN
+ *
+ * @post The return value is not NaN
  *
  * @perform O(D), where D = std::distance(@p first, @p last).
  *
@@ -109,9 +110,8 @@ mean(ConstInputIterator first, ConstInputIterator last) {
 }
 
 /** Finds the variance of the values in a generic container object. The 
- *	container class is accessed using first and last iterators, as in the 
- *	C++ STL convention, and the mean is computed over the interval 
- *	[first, last).
+ *	container class is accessed using first and last iterators, and 
+ *	the variance is computed over the interval [first, last).
  * 
  * @tparam ConstInputIterator The iterator type for the container over which the 
  *	variance is to be calculated. Must be <a href="http://www.boost.org/doc/libs/release/libs/iterator/doc/ReadableIterator.html">readable</a> and support <a href="http://www.boost.org/doc/libs/release/libs/iterator/doc/ForwardTraversal.html">forward traversal</a>.
@@ -124,6 +124,9 @@ mean(ConstInputIterator first, ConstInputIterator last) {
  *
  * @pre [@p first, @p last) is a valid range
  * @pre There are at least two elements in the range [@p first, @p last)
+ * @pre No value in [@p first, @p last) is NaN
+ *
+ * @post The return value is not NaN
  *
  * @perform O(D), where D = std::distance(@p first, @p last).
  *
@@ -179,8 +182,8 @@ variance(ConstInputIterator first, ConstInputIterator last) {
 
 /** Finds the (uninterpolated) quantile of the values in a generic container 
  *	object. The container class is accessed using first and last 
- *	iterators, as in the C++ STL convention, and the quantile is 
- *	computed over the interval [first, last). Data is assumed unsorted.
+ *	iterators, and the quantile is computed over the interval 
+ *	[first, last). Data is assumed unsorted.
  * 
  * @tparam ConstRandomAccessIterator The iterator type for the container over which the 
  *	variance is to be calculated. Must be <a href="http://www.boost.org/doc/libs/release/libs/iterator/doc/ReadableIterator.html">readable</a> and support <a href="http://www.boost.org/doc/libs/release/libs/iterator/doc/RandomAccessTraversal.html">random access</a>
@@ -240,9 +243,11 @@ quantile(ConstRandomAccessIterator first, ConstRandomAccessIterator last, double
 	typedef typename std::iterator_traits<ConstRandomAccessIterator>::value_type Value;
 	
 	if (quantile < 0.0 || quantile > 1.0) {
-		char buf[60];
-		sprintf(buf, "Invalid quantile of %0.2f passed to quantile()", quantile);
-		throw std::invalid_argument(buf);
+		try {
+			throw std::invalid_argument("Invalid quantile of " + lexical_cast<std::string>(quantile) + " passed to quantile()");
+		} catch (const bad_lexical_cast& e) {
+			throw std::invalid_argument("Invalid quantile passed to quantile()");
+		}
 	}
 
 	// We don't want to alter the data, so we copy while sorting

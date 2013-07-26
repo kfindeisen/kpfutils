@@ -33,6 +33,8 @@ namespace kpfutils {
  *
  * @param[in] msg A string prepended to the error message.
  *
+ * @post @c errno = 0
+ *
  * @exception std::runtime_error Thrown if @c errno &ne; 0
  * 
  * @exceptsafe The function arguments are unchanged in the event of an 

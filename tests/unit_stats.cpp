@@ -1,4 +1,4 @@
-/** Test unit for statistics template routines in stats.tmp.h
+/** Test unit for statistics template functions in stats.tmp.h
  * @file common/tests/unit_stats.cpp
  * @author Krzysztof Findeisen
  * @date Created July 20, 2011

@@ -1,7 +1,7 @@
 # Compilation make for utilities library
 # by Krzysztof Findeisen
 # Created June 17, 2010
-# Last modified June 18, 2013
+# Last modified July 25, 2013
 
 include makefile.inc
 
@@ -9,7 +9,9 @@ include makefile.inc
 # Select all files
 PROJ     := kpfutils
 PROJ     := lib$(PROJ).a
-SOURCES  := cerror.cpp checkedexception.cpp filealloc.cpp fileerror.cpp fileio.cpp stats_except.cpp
+SOURCES  := cerror.cpp checkedexception.cpp filealloc.cpp fileerror.cpp fileio.cpp \
+	lcexcept.cpp lcin.cpp lcmanip.cpp lcout.cpp readnames.cpp \
+	readtable.cpp stats_except.cpp writetable.cpp
 OBJS     := $(SOURCES:.cpp=.o)
 # No subdirectories -- will cause naming conflicts in final archive
 DIRS     := 

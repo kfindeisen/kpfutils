@@ -11,7 +11,7 @@
 
 namespace kpfutils {
 
-/** @defgroup vecarray Vector and array conversions
+/** @defgroup vecarray Vector and Array Conversions
  *
  * These functions wrap copying of vectors into arrays and vice versa.
  *
@@ -20,6 +20,8 @@ namespace kpfutils {
  */
 
 /** Returns an array copy of a vector.
+ *
+ * @tparam T The type of the elements in the vector. Elements must be <a href="http://www.boost.org/doc/libs/release/doc/html/Assignable.html">assignable</a> and <a href="http://www.boost.org/doc/libs/release/doc/html/DefaultConstructible.html">default-constructible</a>.
  *
  * @param[in] vec The vector to copy.
  *
@@ -52,7 +54,11 @@ boost::shared_array<T> vecToArr(const std::vector<T>& vec) {
 
 /** Returns a vector copy of an array.
  *
+ * @tparam T The type of the elements in the array. Elements must be <a href="http://www.boost.org/doc/libs/release/doc/html/Assignable.html">assignable</a> and <a href="http://www.boost.org/doc/libs/release/doc/html/DefaultConstructible.html">default-constructible</a>.
+ *
  * @param[in] arr,n The array to copy.
+ *
+ * @pre @p n > 0
  *
  * @return A vector containing the same elements in the same order 
  *	as @p arr.
