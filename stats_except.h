@@ -2,7 +2,7 @@
  * @file common/stats_except.h
  * @author Krzysztof Findeisen
  * @date Created May 5, 2013
- * @date Last modified June 17, 2013
+ * @date Last modified September 18, 2013
  */
 
 #ifndef KPFSTATEXCEPTH
@@ -28,6 +28,15 @@ public:
 	/** Constructs a NotEnoughData object.
 	 */
 	explicit NotEnoughData(const string& what_arg);
+};
+
+/** This exception is thrown if a function argument is not sorted.
+ */
+class NotSorted : public std::invalid_argument {
+public:
+	/** Constructs a NotSorted object.
+	 */
+	explicit NotSorted(const string& what_arg);
 };
 
 /** @} */	// end stats

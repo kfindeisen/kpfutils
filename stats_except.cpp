@@ -2,7 +2,7 @@
  * @file common/stats_except.cpp
  * @author Krzysztof Findeisen
  * @date Created May 5, 2013
- * @date Last modified June 17, 2013
+ * @date Last modified September 18, 2013
  */
 
 #include <stdexcept>
@@ -26,6 +26,21 @@ using std::string;
  * @exceptsafe Object construction is atomic.
  */
 NotEnoughData::NotEnoughData(const string& what_arg) : invalid_argument(what_arg) {
+}
+
+/** Constructs a NotSorted object.
+ *
+ * @param[in] what_arg A string with the same content as the value 
+ *	returned by what().
+ *
+ * @post this->what() = @p what_arg.c_str()
+ *
+ * @exception std::bad_alloc Thrown if there is not enough memory to 
+ *	construct the exception.
+ * 
+ * @exceptsafe Object construction is atomic.
+ */
+NotSorted::NotSorted(const string& what_arg) : invalid_argument(what_arg) {
 }
 
 }}		// end kpfutils::except
