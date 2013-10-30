@@ -42,7 +42,7 @@ namespace kpfutils {
  *	is assumed to be formatted as a list of strings, one per 
  *	line.
  * @param[out] fileList a list of strings that stores the filenames in 
- *	@p hInput. The list may be empty.
+ *	@p fileName. The list may be empty.
  *
  * @exception std::bad_alloc Thrown if there is not enough memory to store 
  *	the file list.
