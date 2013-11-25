@@ -35,6 +35,7 @@
 #include <gsl/gsl_rng.h>
 #include <gsl/gsl_statistics_double.h>
 #include <gsl/gsl_statistics_int.h>
+#include "../nan.h"
 #include "../stats.tmp.h"
 #include "../alloc.tmp.h"
 
@@ -255,5 +256,53 @@ BOOST_AUTO_TEST_CASE(variance)
 }
 
 BOOST_AUTO_TEST_SUITE_END()
+
+// Boost.Test uses non-virtual destructors
+#ifdef GNUC_FINEWARN
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Weffc++"
+#endif
+
+/** Test cases for testing functions related to handling Nan values
+ * @class BoostTest::test_nan
+ */
+BOOST_AUTO_TEST_SUITE(test_nan)
+
+/** Tests whether NaN diagnostics work as advertised
+ *
+ * @exceptsafe Does not throw exceptions.
+ */
+BOOST_AUTO_TEST_CASE(nan_check) {
+	// Easy access to special double values
+	typedef std::numeric_limits<double> d;
+	
+	BOOST_WARN(d::     has_infinity);
+	BOOST_WARN(d::    has_quiet_NaN);
+	BOOST_WARN(d::has_signaling_NaN);
+
+	// Skip tests if the system doesn't support special floating-point values
+	BOOST_CHECK(!d::     has_infinity || !isNan( d::     infinity()));
+	BOOST_CHECK(                         !isNan( 3.0               ));
+	BOOST_CHECK(                         !isNan( 0.0               ));
+	BOOST_CHECK(                         !isNan(-3.0               ));
+	BOOST_CHECK(!d::     has_infinity || !isNan(-d::     infinity()));
+	BOOST_CHECK(!d::    has_quiet_NaN ||  isNan(-d::    quiet_NaN()));
+	BOOST_CHECK(!d::has_signaling_NaN ||  isNan(-d::signaling_NaN()));
+	
+	BOOST_CHECK(!d::     has_infinity ||  isNanOrInf( d::     infinity()));
+	BOOST_CHECK(                         !isNanOrInf( 3.0               ));
+	BOOST_CHECK(                         !isNanOrInf( 0.0               ));
+	BOOST_CHECK(                         !isNanOrInf(-3.0               ));
+	BOOST_CHECK(!d::     has_infinity ||  isNanOrInf(-d::     infinity()));
+	BOOST_CHECK(!d::    has_quiet_NaN ||  isNanOrInf(-d::    quiet_NaN()));
+	BOOST_CHECK(!d::has_signaling_NaN ||  isNanOrInf(-d::signaling_NaN()));
+}
+
+BOOST_AUTO_TEST_SUITE_END()
+
+// Re-enable all compiler warnings
+#ifdef GNUC_FINEWARN
+#pragma GCC diagnostic pop
+#endif
 
 }}	// end kpfutils::test
