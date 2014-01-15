@@ -2,7 +2,7 @@
  * @file common/filealloc.cpp
  * @author Krzysztof Findeisen
  * @date Created June 18, 2013
- * @date Last modified July 24, 2013
+ * @date Last modified January 14, 2014
  */
 
 #include <string>
@@ -24,7 +24,8 @@ using boost::shared_ptr;
  * @param[in] mode The mode to open the file, following the same 
  *	conventions as for @c fopen()
  *
- * @return A handle to the newly opened file.
+ * @return A handle to the newly opened file. The file will be closed once its 
+ *	last reference disappears.
  *
  * @exception kpfutils::except::FileIo Thrown if the file could not be opened.
  * 

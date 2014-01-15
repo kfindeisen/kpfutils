@@ -2,7 +2,7 @@
  * @file common/csv.h
  * @author Krzysztof Findeisen
  * @date Created July 24, 2011
- * @date Last modified October 25, 2013
+ * @date Last modified January 14, 2014
  */
 
 #ifndef KPFUTILSCSVH
@@ -21,6 +21,9 @@ using namespace std;
  * These functions read and write data tables to disk in text format.
  * 
  * Include csv.h to use these functions
+ * 
+ * @todo Redefine these interfaces in terms of variable argument lists, while 
+ * retaining backward compatibility.
  *
  * @{
  */

@@ -13,7 +13,7 @@
  * @internal "+build" tag can be used to distinguish which development 
  *	version was used to create which output
  */
-#define KPFUTILS_VERSION_STRING "1.0.0-devel"
+#define KPFUTILS_VERSION_STRING "1.0.0"
 
 /** Machine-readable version information
  */

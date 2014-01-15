@@ -2,7 +2,7 @@
  * @file common/alloc.tmp.h
  * @author Krzysztof Findeisen
  * @date Created May 27, 2013
- * @date Last modified July 24, 2013
+ * @date Last modified January 14, 2014
  */
 
 #ifndef KPFUTILSALLOCH
@@ -27,7 +27,8 @@ namespace kpfutils {
  */
 boost::shared_ptr<FILE> fileCheckOpen(const std::string& fileName, const char* mode);
 
-/** Wrapper that throws @c std::bad_alloc if an object was not allocated
+/** Wrapper that throws @c std::bad_alloc if an object was not allocated and 
+ *	has no effect otherwise.
  *
  * @tparam T The type of the allocated object.
  *
