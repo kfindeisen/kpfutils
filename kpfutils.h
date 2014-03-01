@@ -2,7 +2,7 @@
  * @file common/kpfutils.h
  * @author Krzysztof Findeisen
  * @date Created June 18, 2013
- * @date Last modified July 25, 2013
+ * @date Last modified February 28, 2014
  */
 
 #ifndef KPFUTILSH
@@ -30,6 +30,21 @@
  * a single library. Rather, they are a set of common tools and conventions 
  * I use for writing astronomical applications. They are needed to compile 
  * other C++ programs I have written, but are not intended for standalone use.
+ *
+ * @section legal License
+ *
+ * Copyright 2014 Krzysztof Findeisen
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  *
  * @page install Installation
  *
